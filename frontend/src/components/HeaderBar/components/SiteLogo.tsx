@@ -6,7 +6,11 @@ import {Link} from "react-router-dom";
 const SiteLogo = () => {
 	return (
 		<>
-			<AdbIcon sx={{ mr: 1 }} />
+			<img
+				src="/logo.png" // Change this to the actual path of your logo
+				alt="Fishing Memberships NI Logo"
+				style={{ width: "40px", height: "auto", marginRight: "8px" }}
+			/>
 			<Typography
 				variant="h6"
 				noWrap
@@ -16,13 +20,12 @@ const SiteLogo = () => {
 					mr: 2,
 					fontFamily: "monospace",
 					fontWeight: 700,
-					letterSpacing: ".3rem",
 					color: "inherit",
 					textDecoration: "none",
 					flexGrow: { xs: 1, md: 0 },
 				}}
 			>
-				LOGO
+				Fishing Memberships NI
 			</Typography>
 		</>
 	)

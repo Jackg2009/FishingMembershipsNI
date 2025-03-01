@@ -6,7 +6,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 router.get('/', async (req, res) => {
 	try {
 		const clubs = await Club.find();
-		console.log(clubs)
+
 		res.json(clubs);
 	} catch (error) {
 		console.error(error);
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 // Apply to a club
 router.post("/apply", authMiddleware, async (req, res) => {
 	const { clubId } = req.body;
-	const userId = req.user.id; // Assumes authMiddleware adds user info
+	const userId = req.user.id;
 
 	try {
 		// Check if the club exists
@@ -61,5 +61,16 @@ router.post("/apply", authMiddleware, async (req, res) => {
 	}
 });
 
+router.get('/:id', async (req, res) => {
+	try {
+		const club = await Club.findById(req.params.id).populate('members');
+		if (!club) {
+			return res.status(404).json({ message: 'Club not found' });
+		}
+		res.json(club);
+	} catch (error) {
+		res.status(500).json({ message: 'Server error', error });
+	}
+});
 
 module.exports = router;

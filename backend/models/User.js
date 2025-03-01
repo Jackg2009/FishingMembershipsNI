@@ -14,10 +14,18 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     email: String,
-    confirmPassword: String,
     isAdmin: Boolean,
+    clubs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Club'
+    }],
     applications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Club" }]
 });
+
+// Compare password for authentication
+userSchema.methods.comparePassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
 
 // Hash password before saving it to the database
 userSchema.pre('save', async function(next) {
@@ -27,9 +35,6 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
-// Compare password for authentication
-userSchema.methods.comparePassword = async function (enteredPassword) {
-    return await bcrypt.compare(enteredPassword, this.password);
-};
+
 
 module.exports = mongoose.model("User", userSchema);

@@ -7,8 +7,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ProfileMenu = () => {
 	const {isAuthenticated, logout, user} = useAuth();
-	
-	console.log("user ", user)
+
 	const [userMenu, setUserMenu] = useState<null | HTMLElement>(null);
 	const navigate = useNavigate();
 	
