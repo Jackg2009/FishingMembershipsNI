@@ -1,25 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
-interface Member {
-    id: string;
-    name: string;
-}
-
-interface Committee {
-    id: string;
-    name: string;
-    role: String;
-}
-
-interface Club {
-    _id: string;
-    name: string;
-    description: string;
-    location: string;
-    members: Member[];
-    committee: Committee[];
-}
+import { Club } from '../../types';
 
 const useGetClubs = () => {
     const [clubs, setClubs] = useState<Club[]>([]);

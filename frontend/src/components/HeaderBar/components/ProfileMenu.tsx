@@ -1,7 +1,7 @@
 import {Avatar, Box, Button, IconButton, Menu, MenuItem, Tooltip, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAuth} from "../../../hooks/useAuth";
+import {useAuth} from "../../../hooks/useAuth/useAuth";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 

@@ -27,11 +27,11 @@ const MobileMenu = (props: MobileMenu) => {
 					const linkTo = page === "Home" ? "/" : `/${page.toLowerCase()}`;
 
 					return (
-						<MenuItem key={page} onClick={() => setNavMenu(null)}>
-							<Link to={linkTo} style={{ textDecoration: "none", color: "inherit" }}>
+						<Link to={linkTo} style={{ textDecoration: "none", color: "inherit", width: '100%' }}>
+							<MenuItem key={page} onClick={() => setNavMenu(null)} sx={{ width: '100%' }}>
 								<Typography textAlign="center">{page}</Typography>
-							</Link>
-						</MenuItem>
+							</MenuItem>
+						</Link>
 					);
 				})}
 			</Menu>

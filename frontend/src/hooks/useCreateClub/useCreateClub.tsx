@@ -1,10 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
-interface Club {
-    name: string;
-    description: string;
-}
+import { Club } from "../../types/club"
 
 const useCreateClub = () => {
     const [loading, setLoading] = useState(false);

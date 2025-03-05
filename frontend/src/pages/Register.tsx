@@ -14,9 +14,9 @@ import {
     Card,
     CardContent, FormControl,
 } from '@mui/material';
-import useCreateUser from "../hooks/CreateUser";
+import useCreateUser from "../hooks/useCreateUser/useCreateUser";
 
-const SignUp = () => {
+const Register = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [formData, setFormData] = useState({
         forename: '',
@@ -282,4 +282,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Register;

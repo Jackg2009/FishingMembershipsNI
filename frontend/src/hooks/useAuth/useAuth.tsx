@@ -22,8 +22,7 @@ export function useAuth() {
 	}, [isAuthenticated])
 	
 	const user: IUser | null = isUserLoggedIn() ? jwtDecode<IUser>(localStorage.getItem('user_token') as string) : null;
-	
-	
+
 	const login = async (email: string, password: string) => {
 		setLoading(true);
 		setError(null); // Reset previous error

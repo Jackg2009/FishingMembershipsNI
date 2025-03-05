@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {TextField, Button, Card, CardContent, CardHeader, Typography, Grid2 as Grid, FormControl, Link} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {useAuth} from "../hooks/useAuth";
+import {useAuth} from "../hooks/useAuth/useAuth";
 
-const SignIn = () => {
+const Login = () => {
     const [formData, setFormData] = useState({ email: "", password: "" });
     const { login, error, loading } = useAuth();
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ const SignIn = () => {
         console.log('Login result:', result); // Debugging line
 
         if (result.success) {
-            navigate("/home"); // Redirect on success
+            navigate("/"); // Redirect on success
         } else {
             console.log("Login failed");
         }
@@ -79,7 +79,7 @@ const SignIn = () => {
                                 {loading ? "Signing In..." : "Sign In"}
                             </Button>
                             <Typography variant="body1" align="center">
-                                <Link href="/signup">Create an Account</Link>
+                                <Link href="/Register">Create an Account</Link>
                             </Typography>
                         </FormControl>
                     </CardContent>
@@ -90,4 +90,4 @@ const SignIn = () => {
 };
 
 
-export default SignIn;
+export default Login;

@@ -3,19 +3,7 @@ const mongoose = require('mongoose');
 // Define the Event Schema
 const eventSchema = new mongoose.Schema(
     {
-        club: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Club',
-            required: true
-        },
-
-        title: {
-            type: String,
-            required: true,
-            trim: true
-        },
-
-        description: {
+        eventName: {
             type: String,
             required: true,
             trim: true
@@ -27,15 +15,31 @@ const eventSchema = new mongoose.Schema(
             trim: true
         },
 
+        telephone: {
+            type: String,
+            trim: true
+        },
+
+        club: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Club',
+            required: true
+        },
+
+        description: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
         date: {
             type: Date,
             required: true
         },
 
-        visibility: {
-            type: String,
-            enum: ['private', 'public'],
-            default: 'private'
+        isPrivate: {
+            type: Boolean,
+            default: 'true'
         },
 
         image: {

@@ -1,20 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
-interface User {
-    forename: string,
-    surname: string,
-    dob: Date,
-    street: string,
-    city: string,
-    county: string,
-    postcode: string,
-    contactNumber: Number,
-    fishingLicense: string,
-    username: string,
-    email: string,
-    password: string,
-}
+import {User} from "../../types/user"
 
 const useCreateUser = () => {
     const [loading, setLoading] = useState(false);

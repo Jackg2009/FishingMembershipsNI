@@ -24,9 +24,6 @@ router.post('/', async (req, res) => {
 		res.status(400).json({message: error.message});
 	}
 
-	//
-	// const { name, email } = req.body;
-	// res.json({ message: 'User created', data: { name, email } });
 });
 
 // Endpoint to get user applications

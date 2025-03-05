@@ -39,7 +39,7 @@ router.post("/apply", authMiddleware, async (req, res) => {
 		// Check if the club exists
 		const club = await Club.findById(clubId);
 		if (!club) {
-			return res.status(404).json({ message: "Club not found" });
+			return res.status(404).json({ message: "ClubDetails not found" });
 		}
 
 		// Check if the user has already applied
@@ -65,7 +65,7 @@ router.get('/:id', async (req, res) => {
 	try {
 		const club = await Club.findById(req.params.id).populate('members');
 		if (!club) {
-			return res.status(404).json({ message: 'Club not found' });
+			return res.status(404).json({ message: 'ClubDetails not found' });
 		}
 		res.json(club);
 	} catch (error) {

@@ -5,7 +5,9 @@ export const themeColors = {
 		secondary: '#5D6D7E',
 	},
 	fishing: {
-		main: '#2B7A78',
+		main: '#3fb58e',
+		secondary: '#0BCEAE',
+		background: '#EDEDED',
 		light: '#6EBFB5',
 		dark: '#205B5A',
 	},

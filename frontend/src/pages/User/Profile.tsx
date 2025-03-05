@@ -13,7 +13,7 @@ import {
 	Button,
 	TextField,
 } from '@mui/material';
-import {IUser, useAuth} from '../../hooks/useAuth';
+import {IUser, useAuth} from '../../hooks/useAuth/useAuth';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
 

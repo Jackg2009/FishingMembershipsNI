@@ -6,8 +6,8 @@ export const theme = createTheme({
 		primary: themeColors.fishing,
 		secondary: themeColors.sand,
 		background: {
-			default: '#dadada',
-			paper: '#FFFFFF',
+			default: themeColors.background,  // Should be the grey color
+			paper: themeColors.white,         // Paper elements like cards, etc.
 		},
 		text: themeColors.text,
 	},
@@ -16,8 +16,8 @@ export const theme = createTheme({
 			defaultProps: {
 				disableScrollLock: true,
 			},
-		}
-	}
-})
+		},
+	},
+});
 
 export default theme
