@@ -1,4 +1,6 @@
-export interface Event {
+import {Committee, Member} from "./member";
+
+export interface FishingEvent {
     id: string;             // The ObjectId (you can replace it with 'string' if you're using MongoDB ObjectId string)
     eventName: string;      // Name of the event (from JSON "eventName")
     location: string;       // Location of the event

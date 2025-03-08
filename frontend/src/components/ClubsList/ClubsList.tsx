@@ -2,10 +2,13 @@ import React from 'react';
 import {
     TextField,
     InputAdornment,
-    Card, CardHeader, CardContent, Grid2 as Grid
+    Card, CardHeader, CardContent, Grid2 as Grid, Box, Typography, CardMedia
 } from '@mui/material';
 import {Search} from '@mui/icons-material';
 import {Club} from "../../types/club"
+import Logo from "../../../public/logo.png";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 interface ClubsListProps {
     clubs: Club[];
@@ -55,9 +58,11 @@ const ClubsList: React.FC<ClubsListProps> = ({clubs, searchTerm, setSearchTerm, 
                             justifyContent: 'space-between',
                             p: 2,
                             boxShadow: 3,
+                            borderRadius: 2,
                             transition: "transform 0.2s",
                             "&:hover": { transform: "scale(1.02)" },
-                            cursor: "pointer"
+                            cursor: "pointer",
+                            alignItems: 'center',
                         }}
                     >
                         <CardHeader
@@ -65,11 +70,37 @@ const ClubsList: React.FC<ClubsListProps> = ({clubs, searchTerm, setSearchTerm, 
                             component="th"
                             scope="row"
                             sx={{color: 'lightblue', cursor: 'pointer'}}
-                            onClick={() => navigate('/clubs/' + club._id)}
+                            onClick={() => navigate('/clubs/' + club.id)}
                         >
                             {club.name}
                         </CardHeader>
-                        <CardContent>{club.description}</CardContent>
+                        <CardContent>
+                            <CardMedia
+                                sx={{
+                                    width: 250,
+                                    height: 250,
+                                    backgroundImage: `url(${club.clubLogo ? club.clubLogo : Logo})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    borderRadius: 1,
+                                    mb: 2,
+                                }}
+                            />
+                            <Typography variant="h5" sx={{ mb: 2 }}>
+                                {club.name}
+                            </Typography>
+                            <Typography variant="body1">
+                                <LocationOnIcon sx={{ mr: 1 }} />
+                                {club.location}
+                            </Typography>
+                            <Typography variant="body1">
+                                <PhoneIcon sx={{ mr: 1 }} />
+                                {club.telephone}
+                            </Typography>
+                            <Typography variant="body1" sx={{ mt: 3 }}>
+                                {club.description}
+                            </Typography>
+                        </CardContent>
                     </Card>
                 </Grid>
             ))}

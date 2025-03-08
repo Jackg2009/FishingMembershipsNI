@@ -6,8 +6,8 @@ export const theme = createTheme({
 		primary: themeColors.fishing,
 		secondary: themeColors.sand,
 		background: {
-			default: themeColors.background,  // Should be the grey color
-			paper: themeColors.white,         // Paper elements like cards, etc.
+			default: themeColors.fishing.background,
+			paper: themeColors.white,
 		},
 		text: themeColors.text,
 	},

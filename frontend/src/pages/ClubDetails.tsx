@@ -14,7 +14,7 @@ const ClubDetails = () => {
 	const { user } = useAuth();
 	const { applied, applying, handleApply } = useGetApplications(user, clubId);
 
-	const club = clubs.find((club) => club._id === clubId);
+	const club = clubs.find((club) => club.id === clubId);
 
 	if (loading) return <Skeleton variant={'rectangular'} width={'100%'} height={'100vh'} />;
 	if (error) return <div>Error: {error.message}</div>;
@@ -110,10 +110,8 @@ const ClubDetails = () => {
 					<Typography color="text.secondary" sx={{ mt: 2 }}>No events scheduled.</Typography>
 				)}
 
-				{/* Event Creation (Separated into its own component) */}
 				<EventForm clubId={clubId} user={user} committeeMembers={club.committee} />
 
-				{/* Apply Button */}
 				{user && (
 					<Button variant="contained" color="primary" sx={{ display: 'block', margin: '20px auto' }} onClick={handleApply} disabled={applied || applying}>
 						{applied ? "Applied" : applying ? "Applying..." : "Apply to Join"}

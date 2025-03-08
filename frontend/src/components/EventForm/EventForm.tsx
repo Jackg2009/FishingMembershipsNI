@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Paper, Typography, TextField, FormControlLabel, Switch, Button} from '@mui/material';
 import useCreateEvent from "../../hooks/useCreateEvent/useCreateEvent";
-import { Event, Member } from '../../types';
+import { Member } from '../../types';
 
 interface EventFormProps {
-    clubId: string;
-    user: Member;
+    clubId: any;
+    user: any;
     committeeMembers: Member[];
 }
 
