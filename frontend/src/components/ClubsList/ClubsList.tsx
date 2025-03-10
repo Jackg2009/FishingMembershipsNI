@@ -29,7 +29,7 @@ const ClubsList: React.FC<ClubsListProps> = ({clubs, searchTerm, setSearchTerm, 
     );
 
     return (
-        <Grid container spacing={6} sx={{px: 10, py: 10}} >
+        <Grid container spacing={6} sx={{px: 10, py: 10}}>
             <Grid size={{xs: 12}}>
                 <TextField
                     fullWidth
@@ -51,17 +51,22 @@ const ClubsList: React.FC<ClubsListProps> = ({clubs, searchTerm, setSearchTerm, 
             {filteredClubs.map((club) => (
                 <Grid size={{xs: 4}}>
                     <Card
+                        onClick={() => navigate('/clubs/' + club.id)}
                         sx={{
-                            height: 400,
+                            height: 500,
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'space-between',
                             p: 2,
                             boxShadow: 3,
                             borderRadius: 2,
-                            transition: "transform 0.2s",
-                            "&:hover": { transform: "scale(1.02)" },
+                            transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                            "&:hover": {
+                                transform: "scale(1.05)",
+                                boxShadow: "0px 20px 40px rgba(0,0,0,0.1)",
+                            },
                             cursor: "pointer",
+                            textAlign: 'center',
                             alignItems: 'center',
                         }}
                     >
@@ -69,36 +74,61 @@ const ClubsList: React.FC<ClubsListProps> = ({clubs, searchTerm, setSearchTerm, 
                             title={club.name}
                             component="th"
                             scope="row"
-                            sx={{color: 'lightblue', cursor: 'pointer'}}
-                            onClick={() => navigate('/clubs/' + club.id)}
+                            sx={{
+                                color: 'lightblue',
+                                cursor: 'pointer',
+                                textAlign: 'center',
+                            }}
                         >
                             {club.name}
                         </CardHeader>
-                        <CardContent>
+                        <CardContent sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            overflow: 'hidden',
+                        }}>
                             <CardMedia
+                                component="img"
+                                image={club.clubLogo ? club.clubLogo : Logo}
                                 sx={{
-                                    width: 250,
-                                    height: 250,
-                                    backgroundImage: `url(${club.clubLogo ? club.clubLogo : Logo})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    borderRadius: 1,
+                                    width: 150,
+                                    height: 150,
+                                    objectFit: 'contain',
+                                    borderRadius: '50%',
                                     mb: 2,
                                 }}
                             />
-                            <Typography variant="h5" sx={{ mb: 2 }}>
+                            <Typography variant="h5" sx={{mb: 2}}>
                                 {club.name}
                             </Typography>
-                            <Typography variant="body1">
-                                <LocationOnIcon sx={{ mr: 1 }} />
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                    textAlign: 'center',
+                                }}>
+                                {club.name}
+                                <br/>
+                                <LocationOnIcon sx={{mr: 1}}/>
                                 {club.location}
-                            </Typography>
-                            <Typography variant="body1">
-                                <PhoneIcon sx={{ mr: 1 }} />
+                                <br/>
+                                <PhoneIcon sx={{mr: 1}}/>
                                 {club.telephone}
-                            </Typography>
-                            <Typography variant="body1" sx={{ mt: 3 }}>
-                                {club.description}
+                                <br/>
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        display: '-webkit-box', // Required for line clamping
+                                        WebkitBoxOrient: 'vertical', // Specifies the vertical direction
+                                        overflow: 'hidden', // Hide overflow
+                                        WebkitLineClamp: 3, // Limit the number of lines before truncation (adjust as needed)
+                                        textOverflow: 'ellipsis', // Show ellipsis
+                                        marginTop: 1, // Adds space between items
+                                    }}
+                                >
+                                    {club.description}
+                                </Typography>
                             </Typography>
                         </CardContent>
                     </Card>

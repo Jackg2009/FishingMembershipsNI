@@ -7,14 +7,16 @@ const clubSchema = new mongoose.Schema({
     streetName: String,
     locality: String,
     postcode: String,
-    created_at: Date,
-    created_by: Number,
+    createdDate: Date,
+    createdBy: Number,
+    clubLogo: String,
     members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // List of members
-    applicants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // List of users who applied
     committee: [{
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         role: { type: String, required: true }
     }],
+    events: [{type: mongoose.Schema.Types.ObjectId, ref: "FishingEvent" }],
+    applicants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // List of users who applied
 });
 
 module.exports = mongoose.model("Club", clubSchema);

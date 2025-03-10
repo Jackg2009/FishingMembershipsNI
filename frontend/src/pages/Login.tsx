@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import {TextField, Button, Card, CardContent, CardHeader, Typography, Grid2 as Grid, FormControl, Link} from "@mui/material";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../hooks/useAuth/useAuth";
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: "", password: "" });
     const { login, error, loading } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,12 +17,14 @@ const Login = () => {
         e.preventDefault();
         console.log("Submitting form with data:", formData);
 
-        // Call login function and handle its result
+        // Attempt to log the user in
         const result = await login(formData.email, formData.password);
-        console.log('Login result:', result); // Debugging line
+        console.log('Login result:', result);
 
         if (result.success) {
-            navigate("/"); // Redirect on success
+            // Redirect the user to their intended page or home
+            const redirectPath = location.state?.from?.pathname || "/";
+            navigate(redirectPath, { replace: true });
         } else {
             console.log("Login failed");
         }

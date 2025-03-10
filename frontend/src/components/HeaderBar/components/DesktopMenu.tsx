@@ -24,9 +24,6 @@ const DesktopMenu = (props: DesktopMenu) => {
 								color: "white",
 								display: "block",
 								width: "100%",
-								"&:hover": {
-									backgroundColor: themeColors.fishing.dark, // Set background to black on hover
-								},
 							}}
 						>
 							{page}

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Event } from '../../types';
+import API from "../../utils/axios";
 
 const useGetEvents = () => {
     const [latestEvents, setLatestEvents] = useState<Event[]>([]);
@@ -15,20 +14,19 @@ const useGetEvents = () => {
             return;
         }
 
-        axios
-            .get('http://localhost:4000/api/events/latest/', {
-                headers: {
-                    'Authorization': `Bearer ${token}`, // Send token in the Authorization header
-                }
-            })
-            .then(response => {
-                setLatestEvents(response.data);
-                setLoading(false);
-            })
-            .catch(error => {
-                setError(error);
-                setLoading(false);
-            });
+        API.get('/events/latest', {
+            headers: {
+                'Authorization': `Bearer ${token}`, // Send token in the Authorization header
+            }
+        })
+        .then(response => {
+            setLatestEvents(response.data);
+            setLoading(false);
+        })
+        .catch(error => {
+            setError(error);
+            setLoading(false);
+        });
     }, []);
 
     return { latestEvents, loading, error };

@@ -96,9 +96,9 @@ const ClubDetails = () => {
 
 				{visibleEvents.length > 0 ? (
 					visibleEvents.map((event) => (
-						<Card key={event._id} sx={{ mt: 2 }}>
+						<Card key={event.id} sx={{ mt: 2 }}>
 							<CardContent>
-								<Typography variant="h6">{event.name}</Typography>
+								<Typography variant="h6">{event.eventName}</Typography>
 								<Typography color="text.secondary">{new Date(event.date).toDateString()}</Typography>
 								<Typography color={event.isPrivate ? "error" : "primary"}>
 									{event.isPrivate ? "Private Event" : "Public Event"}

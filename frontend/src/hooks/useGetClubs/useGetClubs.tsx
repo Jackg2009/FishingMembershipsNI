@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Club } from '../../types';
+import API from "../../utils/axios";
 
 const useGetClubs = () => {
     const [clubs, setClubs] = useState<Club[]>([]);
@@ -15,8 +16,8 @@ const useGetClubs = () => {
             return;
         }
 
-        axios
-            .get('http://localhost:4000/api/clubs/', {
+        API
+            .get('/clubs/', {
                 headers: {
                     'Authorization': `Bearer ${token}`, // Send token in the Authorization header
                 }

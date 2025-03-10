@@ -17,6 +17,19 @@ export const theme = createTheme({
 				disableScrollLock: true,
 			},
 		},
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					backgroundColor: themeColors.fishing.secondary,
+					"&:hover": {
+						backgroundColor: themeColors.fishing.dark,
+					},
+				},
+			},
+		},
+	},
+	typography: {
+		fontFamily: '"Poppins", Arial, sans-serif', // ✅ Change to your desired font
 	},
 });
 

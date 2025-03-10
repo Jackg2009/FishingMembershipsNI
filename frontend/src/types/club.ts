@@ -5,13 +5,17 @@ export interface Club {
     id: string;
     name: string;
     description: string;
-    clubLogo: string;
+    houseNumber: number,
+    streetName: string,
+    locality: string,
+    postcode: string,
     location: string;
     telephone: string;
-    createdAt: Date;
+    createdDate: Date;
     createdBy: string;
+    clubLogo: string;
     members: Member[];
     committee: Committee[];
     events: FishingEvent[];
-    appliedMembers?: string[];
+    applicants?: string[];
 }

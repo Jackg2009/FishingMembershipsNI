@@ -21,10 +21,7 @@ const GetStartedButton = () => {
         <Button
             variant="contained"
             size="large"
-            sx={{ mt: 3, backgroundColor: themeColors.fishing.secondary,
-                "&:hover": {
-                    backgroundColor: theme.palette.primary.dark, // Change color on hover using the theme's dark shade
-                },}}
+            sx={{ mt: 3}}
             onClick={handleButtonClick}
         >
             Get Started

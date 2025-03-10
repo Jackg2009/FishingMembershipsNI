@@ -2,6 +2,7 @@ import {Avatar, Box, Button, IconButton, Menu, MenuItem, Tooltip, Typography} fr
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../../hooks/useAuth/useAuth";
+import theme from "../../../theme/theme";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -25,7 +26,10 @@ const ProfileMenu = () => {
 	
 	if (!isAuthenticated)
 		return (
-			<Button onClick={() => navigate('/signin')}>Sign In</Button>
+			<Button sx={{color:'white', }}
+				onClick={() => navigate('/signin')}
+
+			>Sign In</Button>
 		)
 	
 	return (
